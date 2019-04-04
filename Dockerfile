@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 ADD l_openvino_toolkit* /openvino/
 
-ARG INSTALL_DIR=/opt/intel/openvino
+ARG INSTALL_DIR=/opt/intel/openvino 
 
 RUN apt-get update && apt-get -y upgrade && apt-get autoremove
 
