@@ -65,7 +65,7 @@ The following flags needs to be added to the docker run command:
 To run the docker-app image with the display enabled: 
 
 ```
-$ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -ti docker-app /bin/bash
+$ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -ti openvino-app /bin/bash
 ```
 
 ### Run two demos
@@ -73,7 +73,7 @@ $ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauth
 Once inside the container, go to the Inference Engine demo directory:
 
 ```
-$ cd /opt/intel/computer_vision_sdk/deployment_tools/demo
+$ cd /opt/intel/openvino/deployment_tools/demo
 ```
 Run the Image Classification demo:
 
