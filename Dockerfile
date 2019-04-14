@@ -18,6 +18,7 @@ RUN apt-get install -y --no-install-recommends \
         python3.5-dev \
         python3-pip \
         python3-setuptools \
+        udev \
         sudo
 
 # installing OpenVINO dependencies
@@ -43,10 +44,9 @@ RUN sudo usermod -a -G video "$(whoami)" && \
 # Step for Movidius Neural Compute Stick
 RUN sudo usermod -a -G users "$(whoami)" && \
     sudo cp /opt/intel/openvino/inference_engine/external/97-myriad-usbboot.rules /etc/udev/rules.d/ && \
-    ./install_NEO_OCL_driver.sh && \
     sudo udevadm control --reload-rules && \
     sudo udevadm trigger && \
-    sudo ldconfig
+    sudo ldconfig; exit 0
 
 # clean up
 RUN apt autoremove -y && \
