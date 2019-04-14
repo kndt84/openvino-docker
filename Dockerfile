@@ -18,6 +18,7 @@ RUN apt-get install -y --no-install-recommends \
         python3.5-dev \
         python3-pip \
         python3-setuptools \
+        udev \
         sudo
 
 # installing OpenVINO dependencies
@@ -34,6 +35,18 @@ RUN cd /openvino/l_openvino_toolkit* && \
 # Model Optimizer
 RUN cd $INSTALL_DIR/deployment_tools/model_optimizer/install_prerequisites && \
     ./install_prerequisites.sh
+
+# Install OpenCL Driver
+RUN sudo usermod -a -G video "$(whoami)" && \
+    cd $INSTALL_DIR/install_dependencies && \
+    ./install_NEO_OCL_driver.sh
+
+# Step for Movidius Neural Compute Stick
+RUN sudo usermod -a -G users "$(whoami)" && \
+    sudo cp /opt/intel/openvino/inference_engine/external/97-myriad-usbboot.rules /etc/udev/rules.d/ && \
+    sudo udevadm control --reload-rules && \
+    sudo udevadm trigger && \
+    sudo ldconfig; exit 0
 
 # clean up
 RUN apt autoremove -y && \
