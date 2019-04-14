@@ -22,7 +22,7 @@ RUN apt-get install -y --no-install-recommends \
 
 # installing OpenVINO dependencies
 RUN cd /openvino/l_openvino_toolkit* && \
-  ./install_openvino_dependencies.sh
+    ./install_openvino_dependencies.sh
 
 RUN pip3 install numpy
 
