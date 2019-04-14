@@ -18,12 +18,6 @@ Or use wget to get the package directly (Latest version is 2019 R1 by the time w
 $ wget http://registrationcenter-download.intel.com/akdlm/irc_nas/15382/l_openvino_toolkit_p_2019.1.094.tgz
 ```
 
-### Extract the file in the root folder  
-
-```
-$ tar -xf l_openvino_toolkit*
-```
-
 ### Build the image
 
 ```
@@ -65,7 +59,7 @@ The following flags needs to be added to the docker run command:
 To run the docker-app image with the display enabled: 
 
 ```
-$ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -ti docker-app /bin/bash
+$ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -ti openvino-app /bin/bash
 ```
 
 ### Run two demos
@@ -73,7 +67,7 @@ $ docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauth
 Once inside the container, go to the Inference Engine demo directory:
 
 ```
-$ cd /opt/intel/computer_vision_sdk/deployment_tools/demo
+$ cd /opt/intel/openvino/deployment_tools/demo
 ```
 Run the Image Classification demo:
 
