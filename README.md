@@ -18,12 +18,6 @@ Or use wget to get the package directly (Latest version is 2019 R1 by the time w
 $ wget http://registrationcenter-download.intel.com/akdlm/irc_nas/15382/l_openvino_toolkit_p_2019.1.094.tgz
 ```
 
-### Extract the file in the root folder  
-
-```
-$ tar -xf l_openvino_toolkit*
-```
-
 ### Build the image
 
 ```
