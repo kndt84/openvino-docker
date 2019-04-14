@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 ADD l_openvino_toolkit* /openvino/
 
-ARG INSTALL_DIR=/opt/intel/openvino 
+ARG INSTALL_DIR=/opt/intel/openvino
 
 RUN apt-get update && apt-get -y upgrade && apt-get autoremove
 
@@ -21,13 +21,13 @@ RUN apt-get install -y --no-install-recommends \
         sudo
 
 # installing OpenVINO dependencies
-RUN cd /openvino/ && \
+RUN cd /openvino/l_openvino_toolkit* && \
     ./install_openvino_dependencies.sh
 
 RUN pip3 install numpy
 
 # installing OpenVINO itself
-RUN cd /openvino/ && \
+RUN cd /openvino/l_openvino_toolkit* && \
     sed -i 's/decline/accept/g' silent.cfg && \
     ./install.sh --silent silent.cfg
 
@@ -35,7 +35,7 @@ RUN cd /openvino/ && \
 RUN cd $INSTALL_DIR/deployment_tools/model_optimizer/install_prerequisites && \
     ./install_prerequisites.sh
 
-# clean up 
+# clean up
 RUN apt autoremove -y && \
     rm -rf /openvino /var/lib/apt/lists/*
 
